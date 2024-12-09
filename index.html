@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enaika-lab</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(145deg, #1e2a38, #2d3b54);
+            color: #fff;
+            animation: fadeIn 1s;
+            overflow-x: hidden;
+        }
+
+        .banner {
+            width: 100%;
+            height: 385px; /* Altura del banner */
+            background-image: url('banner.jpeg'); /* Coloca aquí la ruta de tu imagen */
+            background-size: center; /* Asegura que la imagen cubra todo el contenedor */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita repeticiones de la imagen */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .dropdown {
+            position: relative;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        button {
+            background: linear-gradient(135deg, #28a745, #36d657); /* Verde */
+            color: white;
+            padding: 20px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgb(117, 202, 128);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e2a38;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 15px 25px;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #adff41; /* Verde oscuro */
+            color: #1f381e;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: slideDown 0.4s ease;
+        }
+
+        .info-content {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 20px;
+            color: #b5b5b5;
+            opacity: 0;
+            animation: fadeInContent 1s forwards;
+        }
+
+        .info-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .product img {
+            max-width: 200px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer {
+            background: #1d331815; /* Café oscuro */
+            color: white;
+            text-align: center;
+            padding: 30px 10px;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #09ff01;
+        }
+
+        .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.button-wrapper {
+    display: inline-block;
+    animation: fadeInUp 1s ease-out;
+}
+
+.button-wrapper .dropdown {
+    position: relative;
+}
+
+.button-wrapper button {
+    background: linear-gradient(135deg, #28a745, #36d657);
+    color: white;
+    padding: 20px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgb(117, 202, 128);
+}
+
+.button-wrapper button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInContent {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product {
+    display: flex;
+    flex-direction: row; /* Cambiar de column a row */
+    justify-content: space-around;
+    align-items: center; /* Alineación vertical de los productos */
+    margin: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <!-- La imagen será el banner directamente -->
+    </div>
+
+    <div class="button-container">
+        <div class="button-wrapper">
+            <div class="dropdown">
+                <button>Productores locales</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="mostrarProductos('productos1')">Patios productivos</a>
+                    <a href="#" onclick="mostrarProductos('productos2')">Empaques</a>
+                    <a href="#" onclick="mostrarProductos('productos3')">Otros</a>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper">
+            <div class="dropdown">
+                <button>Emprendedores</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="mostrarProductos('productos4')">Diseños y rediseños</a>
+                    <a href="#" onclick="mostrarProductos('productos5')">Fábrica de formalización</a>
+                    <a href="#" onclick="mostrarProductos('productos6')">Promociones</a>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper">
+            <div class="dropdown">
+                <button>Turistas</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="mostrarProductos('productos7')">Productos ancestrales</a>
+                    <a href="#" onclick="mostrarProductos('productos8')">Talleres ancestrales</a>
+                    <a href="#" onclick="mostrarProductos('productos9')">Otros</a>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper">
+            <div class="dropdown">
+                <button>Quiénes somos</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="mostrarInformacionEquipo()">Miembros del equipo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+            </div>
+        </div>
+        
+
+        <div class="info-content" id="informacion">
+            <!-- Los productos aparecerán aquí -->
+        </div>
+    </div>
+
+  
+    <script>
+        function mostrarProductos(categoria) {
+            const productos = {
+                'productos1': `
+                    <h3>Patios productivos</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="patio_1.jpeg" alt="Producto 1">
+                            <p>Descripción del producto 1</p>
+                        </div>
+                        <div>
+                            <img src="patio_2.jpg" alt="Producto 2">
+                            <p>Descripción del producto 2</p>
+                        </div>
+                        <div>
+                            <img src="patio_3.jpeg" alt="Producto 3">
+                            <p>Descripción del producto 3</p>
+                        </div>
+                        <div>
+                            <img src="patio_4.jpg" alt="Producto 4">
+                            <p>Descripción del producto 4</p>
+                        </div>
+                    </div>`,
+                'productos2': `
+                    <h3>Empaques</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="empaque_1.jpeg" alt="Empaque 1">
+                            <p>Descripción del empaque 1</p>
+                        </div>
+                     
+                        </div>
+                    </div>`,
+                'productos3': `
+                    <h3>Otros</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="otro1.jpg" alt="Otro 1">
+                            <p>Descripción de otro producto 1</p>
+                        </div>
+                        <div>
+                            <img src="otro2.jpg" alt="Otro 2">
+                            <p>Descripción de otro producto 2</p>
+                        </div>
+                        <div>
+                            <img src="otro3.jpg" alt="Otro 3">
+                            <p>Descripción de otro producto 3</p>
+                        </div>
+                        <div>
+                            <img src="otro4.jpg" alt="Otro 4">
+                            <p>Descripción de otro producto 4</p>
+                        </div>
+                    </div>`,
+                'productos4': `
+                    <h3>Diseños y rediseños</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="ancestral_1.jpeg" alt="Diseño 1">
+                            <p>Descripción del diseño 1</p>
+                        </div>
+                        <div>
+                            <img src="ancestral_2.jpeg" alt="Diseño 2">
+                            <p>Descripción del diseño 2</p>
+                        </div>
+                        <div>
+                            <img src="ancestral_3.jpeg" alt="Diseño 3">
+                            <p>Descripción del diseño 3</p>
+                        </div>
+                        
+                    </div>`,
+                'productos5': `
+                    <h3>Fábrica de formalización</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="fabrica1.jpg" alt="Fábrica 1">
+                            <p>Descripción de la fábrica 1</p>
+                        </div>
+                        <div>
+                            <img src="fabrica2.jpg" alt="Fábrica 2">
+                            <p>Descripción de la fábrica 2</p>
+                        </div>
+                        <div>
+                            <img src="fabrica3.jpg" alt="Fábrica 3">
+                            <p>Descripción de la fábrica 3</p>
+                        </div>
+                        <div>
+                            <img src="fabrica4.jpg" alt="Fábrica 4">
+                            <p>Descripción de la fábrica 4</p>
+                        </div>
+                    </div>`,
+                'productos6': `
+                    <h3>Promociones</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="promocion1.jpg" alt="Promoción 1">
+                            <p>Descripción de la promoción 1</p>
+                        </div>
+                        <div>
+                            <img src="promocion2.jpg" alt="Promoción 2">
+                            <p>Descripción de la promoción 2</p>
+                        </div>
+                        <div>
+                            <img src="promocion3.jpg" alt="Promoción 3">
+                            <p>Descripción de la promoción 3</p>
+                        </div>
+                        <div>
+                            <img src="promocion4.jpg" alt="Promoción 4">
+                            <p>Descripción de la promoción 4</p>
+                        </div>
+                    </div>`,
+                'productos7': `
+                    <h3>Productos ancestrales</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="producto_ancestral1.jpg" alt="Producto ancestral 1">
+                            <p>Descripción de producto ancestral 1</p>
+                        </div>
+                        <div>
+                            <img src="producto_ancestral2.jpg" alt="Producto ancestral 2">
+                            <p>Descripción de producto ancestral 2</p>
+                        </div>
+                        <div>
+                            <img src="producto_ancestral3.jpg" alt="Producto ancestral 3">
+                            <p>Descripción de producto ancestral 3</p>
+                        </div>
+                    </div>`,
+                'productos8': `
+                    <h3>Talleres ancestrales</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="taller1.jpg" alt="Taller 1">
+                            <p>Descripción del taller 1</p>
+                        </div>
+                        <div>
+                            <img src="taller2.jpg" alt="Taller 2">
+                            <p>Descripción del taller 2</p>
+                        </div>
+                    </div>`,
+                'productos9': `
+                    <h3>Otros productos turísticos</h3>
+                    <div class="product" style="display: flex; justify-content: space-around;">
+                        <div>
+                            <img src="otro_turista1.jpg" alt="Otro producto turístico 1">
+                            <p>Descripción de otro producto turístico 1</p>
+                        </div>
+                        <div>
+                            <img src="otro_turista2.jpg" alt="Otro producto turístico 2">
+                            <p>Descripción de otro producto turístico 2</p>
+                        </div>
+                    </div>`,
+            };
+    
+            // Mostrar los productos de la categoría seleccionada
+            document.getElementById('informacion').innerHTML = productos[categoria] || '<p>No hay productos disponibles.</p>';
+        }
+        function mostrarInformacionEquipo() {
+    const informacionEquipo = `
+        <h3>Miembros del equipo</h3>
+        <div class="product" style="display: flex; justify-content: space-around;">
+            <div>
+                <img src="miembro1.png" alt="Miembro 1">
+                <p><strong>Thulie Jimenez</strong><br>CEO</p>
+            </div>
+            <div>
+                <img src="miembro2.png" alt="Miembro 2">
+                <p><strong>Olga Cuadrado</strong><br>Responsable de Marketing</p>
+            </div>
+            <div>
+                <img src="miembro3.png" alt="Miembro 3">
+                <p><strong>Dolly Mayorca</strong><br>Administracion y <br> finanzas</p>
+            </div>
+            <div>
+                <img src="miembro4.jpeg" alt="Miembro 4">
+                <p><strong>Andres camargo</strong><br>Provedor directo</p>
+            </div>
+
+             <div>
+                <img src="miembro5.jpeg" alt="Miembro 5">
+                <p><strong> Maria eduvigis</strong><br>Emprendedora</p>
+            </div>
+            <div>
+                <img src="miembro6.jpeg" alt="Miembro 2">
+                <p><strong>Darlis Cassiani </strong><br>Emprendedora</p>
+            </div>
+           
+            <div>
+                <img src="miembro7.jpeg" alt="Miembro 7">
+                <p><strong>Carlos Contreras</strong><br> Desarrollador web </p>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('informacion').innerHTML = informacionEquipo;
+}
+
+    </script>
+  
+</body>
+<div class="footer">
+    <info-content>Correo:</info-content>
+    <p><a href="mailto:enaika20@gmail.com">enaika20@enaika.com</a></p>
+    <p><a href="https://wa.me/+573005269777" target="_blank">Teléfono</a></p>
+    <p>
+        <a href="https://www.facebook.com/EnaikaFitofarmacia/" target="_blank">Facebook</a> |
+        <a href="https://www.instagram.com/enaika_ctg/" target="_blank">Instagram</a>
+    </p>
+    <p>&copy; 2024 Enaika-lab. Todos los derechos reservados.</p>
+</div>
+</html>
